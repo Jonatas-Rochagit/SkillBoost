@@ -154,19 +154,19 @@ export const mockUsers: User[] = [
     id: '1',
     name: 'João Silva',
     email: 'joao@email.com',
-    createdAt: '2024-01-15T10:30:00Z'
+    created_at: '2024-01-15T10:30:00Z'
   },
   {
     id: '2',
     name: 'Maria Santos',
     email: 'maria@email.com',
-    createdAt: '2024-01-20T14:15:00Z'
+    created_at: '2024-01-20T14:15:00Z'
   },
   {
     id: '3',
     name: 'Pedro Costa',
     email: 'pedro@email.com',
-    createdAt: '2024-02-01T09:45:00Z'
+    created_at: '2024-02-01T09:45:00Z'
   }
 ];
 
@@ -177,35 +177,35 @@ export const mockMessages: Message[] = [
     user: 'João Silva',
     text: 'Olá pessoal! Alguém está fazendo o curso de React?',
     time: '14:30',
-    createdAt: '2024-01-15T14:30:00Z'
+    created_at: '2024-01-15T14:30:00Z'
   },
   {
     id: '2',
     user: 'Maria Santos',
     text: 'Oi João! Estou fazendo sim, está muito bom!',
     time: '14:32',
-    createdAt: '2024-01-15T14:32:00Z'
+    created_at: '2024-01-15T14:32:00Z'
   },
   {
     id: '3',
     user: 'Pedro Costa',
     text: 'Também estou fazendo. Alguém quer formar um grupo de estudo?',
     time: '14:35',
-    createdAt: '2024-01-15T14:35:00Z'
+    created_at: '2024-01-15T14:35:00Z'
   },
   {
     id: '4',
     user: 'Ana Lima',
     text: 'Adorei o curso de Python! Recomendo muito.',
     time: '15:20',
-    createdAt: '2024-01-15T15:20:00Z'
+    created_at: '2024-01-15T15:20:00Z'
   },
   {
     id: '5',
     user: 'Carlos Oliveira',
     text: 'Alguém tem dicas para o projeto final do curso de Full Stack?',
     time: '16:45',
-    createdAt: '2024-01-15T16:45:00Z'
+    created_at: '2024-01-15T16:45:00Z'
   }
 ];
 
@@ -222,7 +222,7 @@ export const generateRandomUser = (): User => {
     id: Math.random().toString(36).substr(2, 9),
     name: `${randomName} ${randomSurname}`,
     email: `${randomName.toLowerCase()}.${randomSurname.toLowerCase()}${randomNumber}@email.com`,
-    createdAt: new Date().toISOString()
+    created_at: new Date().toISOString()
   };
 };
 
@@ -247,7 +247,7 @@ export const generateRandomMessage = (user: User): Message => {
     user: user.name,
     text: randomMessage,
     time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-    createdAt: new Date().toISOString()
+    created_at: new Date().toISOString()
   };
 };
 

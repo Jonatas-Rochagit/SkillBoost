@@ -1,5 +1,5 @@
 import { supabase } from '../data/db';
-import type { Course, Message, User } from '../types';
+import type { Course, Message, User, Usuario } from '../types';
 
 export const fetchCourses = async (): Promise<Course[]> => {
   console.log('[supabaseService] Fetching courses...');
@@ -19,7 +19,7 @@ export const fetchMessages = async (): Promise<Message[]> => {
   const { data, error } = await supabase
     .from('messages')
     .select('*')
-    .order('createdAt', { ascending: true });
+    .order('created_at', { ascending: true });
   
   if (error) {
     console.error('[supabaseService] Error fetching messages:', error);
@@ -29,7 +29,7 @@ export const fetchMessages = async (): Promise<Message[]> => {
   return data || [];
 };
 
-export const sendMessageToDB = async (payload: Omit<Message, 'id' | 'createdAt'>): Promise<Message | null> => {
+export const sendMessageToDB = async (payload: Omit<Message, 'id' | 'created_at'>): Promise<Message | null> => {
   const { data, error } = await supabase
     .from('messages')
     .insert([
@@ -37,7 +37,7 @@ export const sendMessageToDB = async (payload: Omit<Message, 'id' | 'createdAt'>
         text: payload.text,
         user: payload.user,
         time: payload.time,
-        createdAt: new Date().toISOString()
+        created_at: new Date().toISOString()
       }
     ])
     .select()
@@ -70,11 +70,27 @@ export const fetchCurrentUser = async (): Promise<User | null> => {
       id: u.id,
       name: (u.user_metadata?.name as string) || u.email || 'Usuário',
       email: u.email || '',
-      createdAt: u.created_at || new Date().toISOString()
+      created_at: u.created_at || new Date().toISOString()
     };
   } catch (error) {
     console.error('[supabaseService] Erro ao buscar usuário:', error);
     return null;
+  }
+};
+
+export const createUser = async (userData: Omit<Usuario, 'id_usuario' | 'created_at'>) => {
+  try {
+    const { data, error } = await supabase
+      .from('usuarios')
+      .insert([userData])
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data;
+  } catch (error) {
+    console.error('Erro ao criar usuário:', error);
+    throw error;
   }
 };
 

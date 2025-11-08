@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       id: 'admin-001',
       name: 'Administrador',
       email: 'admin',
-      createdAt: new Date().toISOString()
+      created_at: new Date().toISOString()
     };
     
     localStorage.setItem('token', 'admin-token-' + Date.now());
@@ -82,7 +82,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       id: Math.random().toString(36).substr(2, 9),
       name,
       email,
-      createdAt: new Date().toISOString()
+      created_at: new Date().toISOString()
     };
     
     localStorage.setItem('token', 'mock-token-' + Date.now());

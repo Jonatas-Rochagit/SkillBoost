@@ -2,7 +2,7 @@ export interface User {
   id: string;
   name: string; // Adicionado
   email: string;
-  createdAt: string;
+  created_at: string;
 }
 
 export interface Message {
@@ -10,7 +10,7 @@ export interface Message {
   text: string;     // Campo principal para o conteúdo da mensagem
   user: string;     // Nome do usuário que enviou
   time: string;     // Hora formatada para exibição
-  createdAt: string;// Timestamp ISO para ordenação
+  created_at: string;// Timestamp ISO para ordenação
 }
 
 export interface Course {
@@ -24,4 +24,14 @@ export interface Course {
   students: number;
   price: string;
   image?: string;
+}
+
+export interface Usuario {
+  id_usuario?: string;
+  nome: string;
+  email: string;
+  senha: string;
+  tipo_usuario: 'admin' | 'aluno' | 'professor';
+  created_at?: string;
+  id_pf: number;
 }
